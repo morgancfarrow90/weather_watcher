@@ -14,7 +14,7 @@ def self.get_page_for_user_location(input_argument)
    hourcards.each do |hourcard|
      hour = hourcard.css("div.time").text.strip
      binding.pry
-     WeatherWatcher::Hourcards.new(hour)
+     WeatherWatcher::Hourcard.new(hour)
    end
  end
  end

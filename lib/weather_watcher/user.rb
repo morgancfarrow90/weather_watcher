@@ -13,7 +13,6 @@ class WeatherWatcher::User
   def get_user_location
     puts "Please enter your location like this: city-state-zipcode (ex: bethesda-md-20816)"
     input = gets.chomp
-    #input is added to end of the url for weather website and sets scraper
   end
   
   def get_user_location_weather(user_input)
@@ -21,7 +20,7 @@ class WeatherWatcher::User
   end
   
   def show_user_location_weather
-    Hourcards.all.each.with_index(1) do |hour, index| 
+    Hourcard.all.each.with_index(1) do |hour, index| 
       puts "#{index}. #{hour.hour}"
     end
   end

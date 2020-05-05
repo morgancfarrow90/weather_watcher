@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'pry'
 
-class WeatherWatcher::Hourcards
+class WeatherWatcher::Hourcard
   @@all = []
   attr_accessor :hour
   
