@@ -7,6 +7,7 @@ class WeatherWatcher::User
     get_user_location 
     get_user_location_weather
     get_leave_time_and_length
+    get_user_plans
   end
   
   def get_user_location
@@ -30,8 +31,17 @@ class WeatherWatcher::User
     puts "When will be leaving and when will you go home?"
     @upcominghours.each.with_index(1) do |hour, index| 
       puts "#{index}. #{hour}"
-  
     end
+  end
+  
+  def get_user_plans
+    chosen_time = gets.strip
+    if valid_input(chosen_time, @upcominghours)
+  end
+  end 
+  
+  def valid_input(input, data)
+    input.to_i <= data.length && input.to_i > 0 
   end
   
   def weather_watcher_result
