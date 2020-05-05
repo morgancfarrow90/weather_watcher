@@ -3,10 +3,10 @@ require 'pry'
 
 class WeatherWatcher::Scraper
   
-attr_accessor :hour, :feelstemp, :windmph, :rain, :description
+attr_accessor :hour, :feelstemp, :windmph, :rain, :description; :user_location_url
 
 def self.get_page_for_user_location
-   page = Nokogiri::HTML(open(@user_location_url))
+   page = Nokogiri::HTML(open(@user_location_url.to_s))
    hourcards = page.css("div.hour-card")
    
    hourcards.each do |h|

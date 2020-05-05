@@ -13,7 +13,8 @@ class WeatherWatcher::User
   def get_user_location
     puts "Please enter your location like this: city-state-zipcode (ex: bethesda-md-20816)"
     input = gets.chomp
-    @user_location_url = "https://www.weatherbug.com/weather-forecast/hourly/" + "#{input}"
+    @user_location_url = "https://www.weatherbug.com/weather-forecast/hourly/#{input}"
+    
     #input is added to end of the url for weather website and sets scraper
   end
   
