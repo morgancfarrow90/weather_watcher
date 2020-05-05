@@ -8,7 +8,6 @@ class WeatherWatcher::User
     get_user_location_weather
     get_leave_time_and_length
     get_user_plans
-    show_weather_for(chosen_time)
   end
   
   def get_user_location
@@ -40,7 +39,7 @@ class WeatherWatcher::User
   end
   
   def show_weather_for(chosen_time)
-    leavetime = @upcominghours[chosen_time-1]
+    leavetime = @upcominghours[chosen_time -1]
     puts "Here is the weather to be ready for when you leave at #{leavetime}."
     
   end
