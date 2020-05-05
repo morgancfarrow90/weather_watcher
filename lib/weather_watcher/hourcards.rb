@@ -11,7 +11,6 @@ class WeatherWatcher::Hourcards
   end 
 
 def self.all
-  WeatherWatcher::Scraper.get_page_for_user_location if @@all.empty?
   @@all
 end
 

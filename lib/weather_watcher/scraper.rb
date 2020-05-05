@@ -5,13 +5,15 @@ class WeatherWatcher::Scraper
   
 attr_accessor :hour, :feelstemp, :windmph, :rain, :description; :user_location_url
 
-def self.get_page_for_user_location
-   page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/hourly/bethesda-md-20817"))
+def self.get_page_for_user_location(input_argument)
+  binding.pry
+   page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/hourly/#{input_argument}"))
    
    hourcards = page.css("div.hour-card")
    
-   hourcards.each do |h|
-     hour = page.css("div.time").text
+   hourcards.each do |hourcard|
+     hour = hourcard.css("div.time").text.strip
+     binding.pry
      WeatherWatcher::Hourcards.new(hour)
    end
  end

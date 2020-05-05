@@ -4,8 +4,8 @@ class WeatherWatcher::User
   
   def call 
     puts "Welcome to the Weather Watcher"
-    get_user_location 
-    get_user_location_weather
+    user_input = get_user_location 
+    get_user_location_weather(user_input)
     get_leave_time_and_length
     get_user_plans
   end
@@ -13,21 +13,23 @@ class WeatherWatcher::User
   def get_user_location
     puts "Please enter your location like this: city-state-zipcode (ex: bethesda-md-20816)"
     input = gets.chomp
-    @user_location_url = "https://www.weatherbug.com/weather-forecast/hourly/#{input}"
-    
     #input is added to end of the url for weather website and sets scraper
   end
   
-  def get_user_location_weather
-    #to be scraped
-  @upcominghours = WeatherWatcher::Hourcards.all
+  def get_user_location_weather(user_input)
+    WeatherWatcher::Scraper.get_page_for_user_location(user_input)
+  end
+  
+  def show_user_location_weather
+    Hourcards.all.each.with_index(1) do |hour, index| 
+      puts "#{index}. #{hour.hour}"
+    end
   end
 
   def get_leave_time_and_length
     puts "When will be leaving and when will you go home?"
-    @upcominghours.each.with_index(1) do |hour, index| 
-      puts "#{index}. #{hour.hour}"
-    end
+    show_user_location_weather
+    #wait for user input
   end
   
   def get_user_plans
