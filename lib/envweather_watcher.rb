@@ -1,5 +1,5 @@
-require "weather_watcher/version"
-require "weather_watcher/user"
+require_relative "weather_watcher/version"
+require_relative "weather_watcher/user"
 
 module WeatherWatcher
   class Error < StandardError; end
