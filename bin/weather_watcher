@@ -2,4 +2,4 @@
 
 require_relative '../lib/envweather_watcher'
 
-WeatherWatcher::User.new.call
+WeatherWatcher::CLI.new.call

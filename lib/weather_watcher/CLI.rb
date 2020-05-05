@@ -1,4 +1,4 @@
-class WeatherWatcher::User
+class WeatherWatcher::CLI
   
   attr_accessor :user_location_url
   
