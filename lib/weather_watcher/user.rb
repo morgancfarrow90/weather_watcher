@@ -19,13 +19,13 @@ class WeatherWatcher::User
   
   def get_user_location_weather
     #to be scraped
-  @upcominghours = ["11:00", "12:00", "13:00"]
+  @upcominghours = WeatherWatcher::Hourcards.all
   end
 
   def get_leave_time_and_length
     puts "When will be leaving and when will you go home?"
     @upcominghours.each.with_index(1) do |hour, index| 
-      puts "#{index}. #{hour}"
+      puts "#{index}. #{hour.name}"
     end
   end
   
