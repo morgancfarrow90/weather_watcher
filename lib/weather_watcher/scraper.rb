@@ -5,9 +5,16 @@ class WeatherWatcher::Scraper
   
 attr_accessor :hour, :feelstemp, :windmph, :rain, :description
 
-def get_page_for_user_location
+def self.get_page_for_user_location
    page = Nokogiri::HTML(open(@user_location_url))
-    #weatherdata = []
+   hourcards = page.css("div.hour-card")
+   
+   hourcards.each do |h|
+     puts h.text
+   end
+ end
+ end
+    
     
   #  page.css("div.hour-card").each do |card|
    #   hour = card.css("span.hour").text
