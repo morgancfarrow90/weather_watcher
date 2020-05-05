@@ -28,8 +28,9 @@ class WeatherWatcher::User
   def get_leave_time_and_length
     #user selects hour they are leaving and when they'll return
     puts "When will be leaving and when will you go home?"
-    @upcominghours.each do |hour| 
-      puts "#{hour}"
+    @upcominghours.each.with_index(1) do |hour, index| 
+      puts "#{index}. #{hour}"
+  
     end
   end
   
