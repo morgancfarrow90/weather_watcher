@@ -11,3 +11,4 @@ Classes
 -CLI
 -weather data instances
 -scraper
+-location? set zip code?
