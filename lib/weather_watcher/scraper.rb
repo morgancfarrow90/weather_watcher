@@ -1,16 +1,12 @@
 require 'open-uri'
 require 'pry'
 
-#class WeatherWatcher::Scraper
+class WeatherWatcher::Scraper
   
-#attr_accessor :hour, :feelstemp, :windmph, :rain, :description
+attr_accessor :hour, :feelstemp, :windmph, :rain, :description
 
-  #def get_page
-    #Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/hourly/"))
- #end
-  
-  #def get_page_for_user_location
-   # page = Nokogiri::HTML(open(@user_location_url))
+def get_page_for_user_location
+   page = Nokogiri::HTML(open(@user_location_url))
     #weatherdata = []
     
   #  page.css("div.hour-card").each do |card|

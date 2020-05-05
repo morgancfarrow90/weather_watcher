@@ -4,6 +4,7 @@ require_relative "weather_watcher/scraper"
 require_relative "weather_watcher/hourcards"
 
 require 'pry'
+require 'nokogiri'
 
 module WeatherWatcher
   class Error < StandardError; end
