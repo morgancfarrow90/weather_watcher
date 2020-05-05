@@ -3,10 +3,11 @@ require 'pry'
 
 class WeatherWatcher::Hourcards
   @@all = []
+  attr_accessor :hour
   
   def initialize(hour)
    @hour = hour
-    save
+   save
   end 
 
 def self.all
@@ -15,6 +16,7 @@ def self.all
 end
 
 def save
-  @all << self
+  @@all << self
 end
+
 end

@@ -26,7 +26,7 @@ class WeatherWatcher::User
   def get_leave_time_and_length
     puts "When will be leaving and when will you go home?"
     @upcominghours.each.with_index(1) do |hour, index| 
-      puts "#{index}. #{hour.name}"
+      puts "#{index}. #{hour.hour}"
     end
   end
   
@@ -41,7 +41,7 @@ class WeatherWatcher::User
   
   def show_weather_for(chosen_time)
     leavetime = @upcominghours[chosen_time -1]
-    puts "Here is the weather to be ready for when you leave at #{leavetime}."
+    puts "Here is the weather to be ready for when you leave at #{leavetime.hour}."
     
   end
   

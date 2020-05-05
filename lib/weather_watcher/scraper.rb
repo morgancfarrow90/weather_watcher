@@ -11,8 +11,8 @@ def self.get_page_for_user_location
    hourcards = page.css("div.hour-card")
    
    hourcards.each do |h|
-     name = page.css("span.hour").text
-     WeatherWatcher::Hourcards.new(name)
+     hour = page.css("span.hour").text
+     WeatherWatcher::Hourcards.new(hour)
    end
  end
  end
