@@ -11,13 +11,9 @@ class WeatherWatcher::User
   end
   
   def get_user_location
-    #gets city-state-zipcode
-    #prints upcoming hours
     puts "Please enter your location like this: city-state-zipcode (ex: bethesda-md-20816)"
     input = gets.chomp
-    
     @user_location_url = "https://www.weatherbug.com/weather-forecast/hourly/" + "#{input}"
-    
     #input is added to end of the url for weather website and sets scraper
   end
   
@@ -27,7 +23,6 @@ class WeatherWatcher::User
   end
 
   def get_leave_time_and_length
-    #user selects hour they are leaving and when they'll return
     puts "When will be leaving and when will you go home?"
     @upcominghours.each.with_index(1) do |hour, index| 
       puts "#{index}. #{hour}"
@@ -36,7 +31,7 @@ class WeatherWatcher::User
   
   def get_user_plans
     chosen_time = gets.strip
-    if valid_input(chosen_time, @upcominghours)
+    show_weather_for(chosen_time) if valid_input(chosen_time, @upcominghours)
   end
   end 
   
@@ -44,8 +39,8 @@ class WeatherWatcher::User
     input.to_i <= data.length && input.to_i > 0 
   end
   
-  def weather_watcher_result
-    #prints the concise overview of weather for that time period
+  def show_weather_for(chosen_time)
+    binding pry 
   end
   
   def ask_again_or_exit
