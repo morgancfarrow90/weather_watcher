@@ -41,7 +41,7 @@ class WeatherWatcher::User
   
   def show_weather_for(chosen_time)
     leavetime = @upcominghours[chosen_time -1]
-    puts "Here is the weather to be ready for when you leave at #{leavetime.hour}."
+    puts "Here is the weather to be ready for when you leave at #{leavetime}."
     
   end
   
