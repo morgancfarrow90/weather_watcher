@@ -21,21 +21,23 @@ attr_accessor :hour, :feelstemp, :windmph, :rain, :description
       rain = card.css ('div.precip')
       weather_info = {:hour => hour,
                 :feelstemp => feelstemp,
-                :profile_url => profile_url}
-      students << student_info
+                :description => description, 
+                :windmph => windmph,
+                :rain => rain}
+      weatherdata << weather_info
       end
-    students
+    weatherdata
    end
   end
     
 
-  def scrape_weather_index
+  ##def scrape_weather_index
      self.get_page_for_user_location.css("div.hour-card")
-  end
+ # end
 
-  def make_hour_blocks
+ # def make_hour_blocks
     scrape_weather_index.each do |h|
       WeatherWatcher::Weather.new_from_index_page(h)
-    end
-  end
+  #  end
+#  end
 end
