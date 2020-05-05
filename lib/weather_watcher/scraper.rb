@@ -5,15 +5,17 @@ class WeatherWatcher::Scraper
   end
   
   def get_page_for_user_location
+    Nokogiri::HTML(open(@user_location_url))
+  end
     
 
-  def scrape_restaurants_index
-     self.get_page.css("div[data-list='1-50'] a.item")
+  def scrape_weather_index
+     self.get_page_for_user_location.css("div.hour-card")
   end
 
-  def make_restaurants
-    scrape_restaurants_index.each do |r|
-      WorldsBestRestaurants::Restaurant.new_from_index_page(r)
+  def make_hour_blocks
+    scrape_weather_index.each do |h|
+      WeatherWatcher::Weather.new_from_index_page(h)
     end
   end
 end

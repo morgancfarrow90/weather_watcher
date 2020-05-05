@@ -1,5 +1,7 @@
 class WeatherWatcher::User
   
+  attr_accessor :user_location_url
+  
   def call 
     puts "Welcome to the Weather Watcher"
     get_user_location 
@@ -11,7 +13,7 @@ class WeatherWatcher::User
     puts "Please enter your location like this: city-state-zipcode (ex: bethesda-md-20816)"
     input = gets.chomp
     
-    user_location_url = "https://www.weatherbug.com/weather-forecast/hourly/"{#input}"
+    @user_location_url = "https://www.weatherbug.com/weather-forecast/hourly/"{#input}"
     
     #input is added to end of the url for weather website and sets scraper
   end
