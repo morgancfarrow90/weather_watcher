@@ -8,7 +8,7 @@ class WeatherWatcher::CLI
     get_user_location_weather(user_input)
     input_departure = get_leave_time
     input_return = get_return_time
-    get_weather_range(user_input, input_departure, input_return)
+    get_weather_range
   end
   
   def get_user_location
@@ -38,8 +38,8 @@ class WeatherWatcher::CLI
    input_return = gets.chomp
 end
 
-def get_weather_range(user_input, input_departure, input_return)
-   WeatherWatcher::Scraper.get_weather_range(user_input,input_departure, input_return)
+def get_weather_range
+   return WeatherWatcher::Weather.all
  end
  end
   
