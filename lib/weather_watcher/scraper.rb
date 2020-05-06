@@ -15,34 +15,30 @@ def self.get_page_for_user_location(input_argument)
      WeatherWatcher::Hourcard.new(hour)
    end
  end
- end
+
  
- ##def self.get_weather_range_for_user(input_argument_two)
-   ##page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/hourly/#{input_argument}"))
+ def self.get_weather_range(input_argument, input_departure, input_return)
+   weatherdata = {}
+   page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/hourly/#{input_argument}"))
    
-  ## hourcards = page.css("div.hour-card")
+  hourcards = page.css("div.hour-card")
    
- ##  hourcards.each do |hourcard|
-    ## hour = hourcard.css("div.time").text.strip
-   ##  WeatherWatcher::Hourcard.new(hour)
-    
-    
-  #  page.css("div.hour-card").each do |card|
-   #   hour = card.css("span.hour").text
-    #  feelstemp = card.css("div.feels-like").text
-     # description = card.css("div.description").text
-      #windmph = card.css("div.value").text
-      #rain = card.css ('div.precip')
-    #  weather_info = {:hour => hour,
-     #           :feelstemp => feelstemp,
-      #          :description => description, 
-       #         :windmph => windmph,
-        #        :rain => rain}
-      #weatherdata << weather_info
-      #end
-    #weatherdata
-   #end
-  #end
+ hourcards.each do |hourcard|
+    hour = hourcard.css("div.time").text.strip
+    feelstemp = hourcard.css("div.feels-like").text.strip
+    description = hourcard.css("div.description").text.strip
+    windmph = hourcard.css("div.value").text.strip
+    rain = hourcard.css ('div.precip').text.strip
+    weather_info = {:hour => hour,
+              :feelstemp => feelstemp,
+       :description => description, 
+        :windmph => windmph,
+         :rain => rain}
+      weatherdata << weather_info
+      end
+    weatherdata
+   end
+  end
     
 
   ##def scrape_weather_index

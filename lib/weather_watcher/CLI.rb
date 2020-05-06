@@ -39,8 +39,8 @@ class WeatherWatcher::CLI
    input_return = gets.chomp
 end
 
-def get_weather_range_data(input_departure, input_return)
-   get_user_location_weather(user_input)
+def get_weather_range(user_input, input_departure, input_return)
+   WeatherWatcher::Hourcard.get_weather_range(user_input,input_departure, input_return)
  end
   
   
