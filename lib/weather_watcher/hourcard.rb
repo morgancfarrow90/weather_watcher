@@ -28,7 +28,7 @@ def self.select_hourcard_range(depart_time, return_time)
   subsection = [self.all.slice(depart_index, return_index)]
   
   subsection.flatten.each do |index|
-    puts index.hour "-" index.temp "\nDetails:" index.description
+    puts "#{index.hour} - #{index.temp} \n Details:#{index.description}"
   end
 end
 end
