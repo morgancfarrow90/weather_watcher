@@ -3,7 +3,7 @@ require 'pry'
 
 class WeatherWatcher::Scraper
   
-attr_accessor :hour, :feelstemp, :windmph, :rain, :description
+attr_accessor :hour, :temp, :description
 
 def self.get_page_for_user_location(input_argument)
    page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/hourly/#{input_argument}"))
@@ -12,12 +12,9 @@ def self.get_page_for_user_location(input_argument)
    
    hourcards.each do |hourcard|
      hour = hourcard.css("div.time").text.strip
-     WeatherWatcher::Hourcard.new(hour)
-   
-     
-   
-     feelstemp = hourcard.css("div.feels-like").text.strip
-     WeatherWatcher::Weather.new(feelstemp)
+     temp = hourcard.css("div.feels-like").text.strip
+     description = hourcard.css("li.hour-card__desktop__details__item")
+     WeatherWatcher::Hourcard.new(hour, temp, description)
    end
  end
  end

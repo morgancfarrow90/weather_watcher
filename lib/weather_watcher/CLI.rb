@@ -8,7 +8,7 @@ class WeatherWatcher::CLI
     get_user_location_weather(user_input)
     input_departure = get_leave_time
     input_return = get_return_time
-    get_weather_range
+    show_weather
   end
   
   def get_user_location
@@ -38,33 +38,10 @@ class WeatherWatcher::CLI
    input_return = gets.chomp
 end
 
-def get_weather_range
-   return WeatherWatcher::Weather.all
- end
- end
-  
-  
-##def get_weather_summary(input_two)
-##  WeatherWatcher::Scraper
-
-
-  
- ## def get_user_plans
-    #chosen_time = gets.strip.to_i
-    #show_weather_for(chosen_time) if valid_input(chosen_time, @upcominghours)
- # end 
-  
- # def valid_input(input, data)
-   # input.to_i <= data.length && input.to_i > 0 
-#  end
-  
-#  def show_weather_for(chosen_time)
-   # leavetime = @upcominghours[chosen_time -1]
-  #  puts "Here is the weather to be ready for when you leave at #{leavetime}."
-    
- # end
-  
- # def ask_again_or_exit
-    #user can ask again or leave 
- # end
+def show_weather 
+    WeatherWatcher::Hourcard.all.each.with_index(1) do |hour, index| 
+      puts "#{index}. #{hour.hour} - Feels Like Temp: #{hour.temp} + Details: #{hour.description}"
+    end
+  end
+end
   
