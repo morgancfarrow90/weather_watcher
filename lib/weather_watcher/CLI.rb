@@ -37,16 +37,10 @@ class WeatherWatcher::CLI
    puts  "When will you be home (enter number next to the hour)?"
    show_user_upcoming_hours
    input = gets.chomp.to_i
-   
-end
+  end
 
-def weather_for_outing(input_departure, input_return)
-  WeatherWatcher::Hourcard.select_hourcard_range(input_departure, input_return)
-end
-
-##def show_relevant_weather
-  ##  WeatherWatcher::Hourcard.all.each.with_index(1) do |hour, index, temp, description| 
-   #   puts "#{hour.hour} - #{hour.temp} \n Details: #{hour.description}"
-  #  end
+  def weather_for_outing(input_departure, input_return)
+   WeatherWatcher::Hourcard.select_hourcard_range(input_departure, input_return)
+  end
 
 end
