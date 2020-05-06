@@ -8,7 +8,7 @@ class WeatherWatcher::CLI
     get_user_location_weather(user_input)
     input_departure = get_leave_time
     input_return = get_return_time
-    show_weather_for_outing(input_departure, input_return)
+    weather_for_outing(input_departure, input_return)
   end
   
   def get_user_location
@@ -29,17 +29,18 @@ class WeatherWatcher::CLI
   def get_leave_time
     puts "When will be leaving (enter number next to the hour)?"
     show_user_upcoming_hours
-    input_departure = gets.chomp.to_i
+    input = gets.chomp.to_i
   end
   
   
   def get_return_time
    puts  "When will you be home (enter number next to the hour)?"
    show_user_upcoming_hours
-   input_return = gets.chomp.to_i
+   input = gets.chomp.to_i
+   
 end
 
-def show_weather_for_outing(input_departure, input_return)
+def weather_for_outing(input_departure, input_return)
   WeatherWatcher::Hourcard.select_hourcard_range(input_departure, input_return)
 end
 
