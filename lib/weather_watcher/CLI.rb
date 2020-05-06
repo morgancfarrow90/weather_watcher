@@ -40,14 +40,19 @@ class WeatherWatcher::CLI
 end
 
 def show_relevant_weather(input_departure, input_return)
-  counter = 0 
-  while input_departure <= input_return
-    WeatherWatcher::Hourcard.all.each do |hour, index| 
-      puts "#{hour.hour} - Feels Like Temp: #{hour.temp} + Details: #{hour.description}"
-     input_departure += 1 
-     
+    
+    WeatherWatcher::Hourcard.all.each.with_index(1) do |index|
+      if index >= input_departure
+      puts "#{@hour} - Feels Like Temp: #{@temp} + Details: #{@description}"
     end
-  end
+    end
+    
+    WeatherWatcher::Hourcard.all.each.with_index(1) do |index|
+      if index <= input_return
+      puts "#{@hour} - Feels Like Temp: #{@temp} + Details: #{@description}"
+    end
+    end
+    
+    
   end
 end
-  
