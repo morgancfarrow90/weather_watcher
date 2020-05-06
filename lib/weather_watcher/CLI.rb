@@ -27,25 +27,28 @@ class WeatherWatcher::CLI
   end
 
   def get_leave_time
+    
     puts "When will be leaving (enter number next to the hour)?"
     show_user_upcoming_hours
-    input_departure = gets.chomp 
+    input_departure = (gets.chomp.to_i) - 1
+    
   end
   
   def get_return_time
    puts  "When will you be home (enter number next to the hour)?"
    show_user_upcoming_hours
-   input_return = gets.chomp
+   input_return = (gets.chomp.to_i) - 1
+   
 end
 
 def show_relevant_weather(input_departure, input_return)
-  counter = input_departure.to_i - 1 
-  while counter <= input_return.to_i
+  
+  while input_departure <= input_return
     WeatherWatcher::Hourcard.all.each do |hour, index| 
       puts "#{hour.hour} - Feels Like Temp: #{hour.temp} + Details: #{hour.description}"
-      
+     input_departure += 1 
+     
     end
-    counter += 1
   end
   end
 end
