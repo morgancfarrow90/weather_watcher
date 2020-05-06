@@ -41,7 +41,7 @@ end
 
 def show_relevant_weather
     WeatherWatcher::Hourcard.all.each.with_index(1) do |hour, index, temp, description| 
-      puts "#{index}. #{hour.hour} \n Feels Like Temp: #{hour.temp} \n Details: #{hour.temp}"
+      puts "#{hour.hour} - #{hour.temp} \n Details: #{hour.description}"
     end
   end
 end
