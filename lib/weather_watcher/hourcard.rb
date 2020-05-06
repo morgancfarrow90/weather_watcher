@@ -27,7 +27,7 @@ class WeatherWatcher::Hourcard
   return_index = (return_time.to_i) - 1
   
   subsection = [self.all.slice(depart_index..return_index)]
-  binding.pry 
+  
     subsection.flatten.each do |index|
       puts "#{index.hour} - #{index.temp} - #{index.precip}"
     end
