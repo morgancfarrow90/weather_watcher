@@ -13,7 +13,7 @@ def self.get_page_for_user_location(input_argument)
    hourcards.each do |hourcard|
      hour = hourcard.css("div.time").text.strip
      temp = hourcard.css("div.feels-like").text.strip
-     description = hourcard.css("li.hour-card__desktop__details__item")
+     description = hourcard.css("li.hour-card__desktop__details__item").text.strip
      WeatherWatcher::Hourcard.new(hour, temp, description)
    end
  end
