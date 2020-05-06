@@ -1,10 +1,8 @@
-Hello World
-
 # WeatherWatcher
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/weather_watcher`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the Weather Watcher!
 
-TODO: Delete this and the text above, and describe your gem
+Getting ready to head out in the next 12 hours? Don't believe the temperature given to you by standard weather apps. Use Weather Watcher to give your location and see the minimum and maxium "feels like" temparature as well as the percent chance of rain (if any). Who cares if the daily high is 75 degrees? That daily high is going to be at the warmest part of the day (not necessarily when you'll be out) and may not be realistic when considering other weather factors like wind and humidty. Plan your outfit based on what the weather is actually going to "feel like!"
 
 ## Installation
 
