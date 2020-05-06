@@ -6,7 +6,10 @@ class WeatherWatcher::CLI
     puts "Welcome to the Weather Watcher"
     user_input = get_user_location 
     get_user_location_weather(user_input)
-    get_leave_time_and_length
+    input_departure = get_leave_time
+    input_return = get_return_time
+    get_weather_range_data(input_departure, input_return)
+    
   end
   
   def get_user_location
@@ -18,18 +21,33 @@ class WeatherWatcher::CLI
     WeatherWatcher::Scraper.get_page_for_user_location(user_input)
   end
   
-  def show_user_location_weather
+  def show_user_upcoming_hours
     WeatherWatcher::Hourcard.all.each.with_index(1) do |hour, index| 
       puts "#{index}. #{hour.hour}"
     end
   end
 
-  def get_leave_time_and_length
-    puts "When will be leaving and when will you go home?"
-    show_user_location_weather
-    #input
+  def get_leave_time
+    puts "When will be leaving (enter number next to the hour)?"
+    show_user_upcoming_hours
+    input_departure = gets.chomp 
   end
+  
+  def get_return_time
+   puts  "When will you be home (enter number next to the hour)?"
+   show_user_upcoming_hours
+   input_return = gets.chomp
 end
+
+def get_weather_range_data(input_departure, input_return)
+   get_user_location_weather(user_input)
+ end
+  
+  
+##def get_weather_summary(input_two)
+##  WeatherWatcher::Scraper
+
+
   
  ## def get_user_plans
     #chosen_time = gets.strip.to_i

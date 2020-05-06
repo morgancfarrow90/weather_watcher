@@ -16,6 +16,15 @@ def self.get_page_for_user_location(input_argument)
    end
  end
  end
+ 
+ ##def self.get_weather_range_for_user(input_argument_two)
+   ##page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/hourly/#{input_argument}"))
+   
+  ## hourcards = page.css("div.hour-card")
+   
+ ##  hourcards.each do |hourcard|
+    ## hour = hourcard.css("div.time").text.strip
+   ##  WeatherWatcher::Hourcard.new(hour)
     
     
   #  page.css("div.hour-card").each do |card|
