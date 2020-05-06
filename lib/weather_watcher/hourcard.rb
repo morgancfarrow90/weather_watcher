@@ -22,11 +22,15 @@ def save
 end
 
 def self.select_hourcard_range(depart_time, return_time)
-  self.all.each do |hour|
-    if depart_time <= hour >= return_time
-    return @hour, @temp, @description
+  depart_index = (depart_time.to_i) - 1
+  return_index = (return_time.to_i) - 1
+  subsection = [self.all.slice(depart_index, return_index)]
+  
+  subsection.each do |index|
+    puts @hour, @temp, @description
+    
   end 
-end
+
 end
 end
 
