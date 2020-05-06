@@ -8,8 +8,7 @@ class WeatherWatcher::CLI
     get_user_location_weather(user_input)
     input_departure = get_leave_time
     input_return = get_return_time
-    get_weather_range_data(input_departure, input_return)
-    
+    get_weather_range(user_input, input_departure, input_return)
   end
   
   def get_user_location
@@ -40,7 +39,8 @@ class WeatherWatcher::CLI
 end
 
 def get_weather_range(user_input, input_departure, input_return)
-   WeatherWatcher::Hourcard.get_weather_range(user_input,input_departure, input_return)
+   WeatherWatcher::Scraper.get_weather_range(user_input,input_departure, input_return)
+ end
  end
   
   
