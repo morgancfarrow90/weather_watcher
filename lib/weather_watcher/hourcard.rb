@@ -4,12 +4,12 @@ require 'pry'
 class WeatherWatcher::Hourcard
   @@all = []
   
-  attr_accessor :hour, :temp, :description
+  attr_accessor :hour, :temp, :precip
   
-  def initialize(hour, temp, description)
+  def initialize(hour, temp, precip)
    @hour = hour
    @temp = temp
-   @description = description
+   @precip = precip
    save
   end 
 
@@ -26,10 +26,10 @@ class WeatherWatcher::Hourcard
   depart_index = (depart_time.to_i) - 1
   return_index = (return_time.to_i) - 1
   
-  subsection = [self.all.slice(depart_index, return_index)]
-  
+  subsection = [self.all.slice(depart_index..return_index)]
+  binding.pry 
     subsection.flatten.each do |index|
-      puts "#{index.hour} - #{index.temp} \n Details: \n#{index.description}"
+      puts "#{index.hour} - #{index.temp} - #{index.precip}"
     end
   end
 
