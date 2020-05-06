@@ -8,7 +8,7 @@ class WeatherWatcher::CLI
     get_user_location_weather(user_input)
     input_departure = get_leave_time
     input_return = get_return_time
-    show_relevant_weather
+    show_weather_for_outing(input_departure, input_return)
   end
   
   def get_user_location
@@ -39,9 +39,13 @@ class WeatherWatcher::CLI
    input_return = gets.chomp.to_i
 end
 
-def show_relevant_weather
-    WeatherWatcher::Hourcard.all.each.with_index(1) do |hour, index, temp, description| 
-      puts "#{hour.hour} - #{hour.temp} \n Details: #{hour.description}"
-    end
-  end
+def show_weather_for_outing(input_departure, input_return)
+  WeatherWatcher::Hourcard.select_hourcard_range(input_departure, input_return)
+end
+
+##def show_relevant_weather
+  ##  WeatherWatcher::Hourcard.all.each.with_index(1) do |hour, index, temp, description| 
+   #   puts "#{hour.hour} - #{hour.temp} \n Details: #{hour.description}"
+  #  end
+
 end

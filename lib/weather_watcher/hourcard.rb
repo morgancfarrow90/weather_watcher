@@ -21,4 +21,12 @@ def save
   @@all << self
 end
 
+def self.select_hourcard_range(depart_time, return_time)
+  self.all.each do |hour|
+    if depart_time <= hour >= return_time
+    return @hour, @temp, @description
+  end 
 end
+end
+end
+
