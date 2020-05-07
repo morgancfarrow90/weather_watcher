@@ -47,13 +47,13 @@ class WeatherWatcher::CLI
   def get_more_weather_or_exit
     puts "Do you need more weather information? Enter yes or no"
     input = gets.chomp
-    if input != "yes" || input!= "no"
-    puts "Please enter yes or no" 
-    input = gets.chomp
-    elsif input == "yes"
+    if input == "yes"
     call
-    else input == "no"
+    elsif input == "no"
     puts "Goodbye! Thank you for using Weather Watcher!"
+    else 
+    puts "Invalid Answer. Let's start over!"
+    call
     end
   end
 
