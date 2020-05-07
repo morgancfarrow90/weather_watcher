@@ -9,6 +9,7 @@ class WeatherWatcher::CLI
     input_departure = get_leave_time
     input_return = get_return_time
     weather_for_outing(input_departure, input_return)
+    get_more_weather_or_exit
   end
   
   def get_user_location
@@ -41,6 +42,19 @@ class WeatherWatcher::CLI
 
   def weather_for_outing(input_departure, input_return)
    WeatherWatcher::Hourcard.select_hourcard_range(input_departure, input_return)
+  end
+  
+  def get_more_weather_or_exit
+    puts "Do you need more weather information? Enter yes or no"
+    input = gets.chomp
+    if input != "yes" || input!= "no"
+    puts "Please enter yes or no" 
+    input = gets.chomp
+    elsif input == "yes"
+    call
+    else input == "no"
+    puts "Goodbye! Thank you for using Weather Watcher!"
+    end
   end
 
 end
