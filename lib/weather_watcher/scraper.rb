@@ -6,13 +6,14 @@ class WeatherWatcher::Scraper
 attr_accessor :hour, :temp, :precip
 
 def self.get_page_for_user_location(input_argument)
-  page = Nokogirl::HTML(open("https://www.weatherbug.com/weather-forecast/10-day-weather/#{input_argument}"))
+  page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/10-day-weather/#{input_argument}"))
   
   daycard = page.css("div.day-card")
   
   daycard.each do |daycard|
-    day = daycard.css("div.day").text.strip
+    day = daycard.css("div.day-card__title .date-wrap").text.strip
     WeatherWatcher::Daycard.new(day)
+    binding.pry
   end
 end
 

@@ -23,16 +23,16 @@ class WeatherWatcher::CLI
   end
   
   def show_user_upcoming_days
-    WeatherWatcher::Hourcard.all.each_with_index(1) do
+    WeatherWatcher::Daycard.all.each.with_index(1) do
       |day, index|
-      puts "#{index}. #{day}"
+      puts "#{index}. #{day.day}"
     end
     end
     
   def get_day
     puts "What day are you going out?"
     show_user_upcoming_days
-    input = get.chomp.to_i
+    input = gets.chomp.to_i
   end
   
   def get_hourly_user_location_weather(input_day)
