@@ -18,7 +18,7 @@ def self.get_page_for_user_location(input_argument)
 end
 
   def self.get_hourly_for_user_location(input_argument)
-   url = "https://www.weatherbug.com/weather-forecast/hourly/" + @location_entry + "?hour=2020#{input_argument}05"
+   url = "https://www.weatherbug.com/weather-forecast/hourly/" + @location_entry + "?hour=202005#{input_argument}"
    page = Nokogiri::HTML(open(url))
    hourcard = page.css("div.hour-card")
    
@@ -28,6 +28,7 @@ end
      precip = hourcard.css("div.precip").text.strip
     
      WeatherWatcher::Hourcard.new(hour, temp, precip)
+    
     end
    end
 
