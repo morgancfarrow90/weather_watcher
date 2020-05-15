@@ -32,7 +32,7 @@ def self.get_page_for_user_location(input_argument)
 
   def self.get_hourly_for_user_location(input_argument, estimate)
    url = "https://www.weatherbug.com/weather-forecast/hourly/" + @location_entry + "?hour=2020#{input_argument}#{estimate}"
-   binding.pry
+  
    page = Nokogiri::HTML(open(url))
    hourcard = page.css("div.hour-card")
    
