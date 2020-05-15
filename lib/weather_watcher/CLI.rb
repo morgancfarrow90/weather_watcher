@@ -7,15 +7,16 @@ class WeatherWatcher::CLI
     user_input = get_user_location 
     get_user_location_weather(user_input)
     input_day = get_day
-    get_hourly_user_location_weather(input_day)
+    
     input_departure = get_leave_time
     input_return = get_return_time
+    get_hourly_user_location_weather(input_day)
     weather_for_outing(input_departure, input_return)
     get_more_weather_or_exit
   end
   
   def get_user_location
-    puts "Please enter your location like this: city-state-zipcode (ex: bethesda-md-20816)"
+    puts "Please enter your location's five digit zip code"
     input = gets.chomp
   end
   
@@ -24,14 +25,9 @@ class WeatherWatcher::CLI
   end
   
   def show_user_upcoming_days
-    counter = 0
-    if counter < 8
-    WeatherWatcher::Daycard.all.each do
+      WeatherWatcher::Daycard.all.each do
       |day|
       puts "#{day.day}"
-      counter += 1
-    end
-    else 
     end
   end
     
