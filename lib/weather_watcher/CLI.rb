@@ -7,6 +7,7 @@ class WeatherWatcher::CLI
     user_input = get_user_location 
     get_user_location_weather(user_input)
     input_day = get_day
+    get_hourly_user_location_weather(input_day)
     input_departure = get_leave_time
     input_return = get_return_time
     weather_for_outing(input_departure, input_return)
@@ -23,16 +24,21 @@ class WeatherWatcher::CLI
   end
   
   def show_user_upcoming_days
-    WeatherWatcher::Daycard.all.each.with_index(1) do
-      |day, index|
-      puts "#{index}. #{day.day}"
+    counter = 0
+    if counter < 8
+    WeatherWatcher::Daycard.all.each do
+      |day|
+      puts "#{day.day}"
+      counter += 1
     end
+    else 
     end
+  end
     
   def get_day
-    puts "What day are you going out?"
+    puts "What date (MM/DD) are you going out? Example: 0515"
     show_user_upcoming_days
-    input = gets.chomp.to_i
+    input = gets.chomp
   end
   
   def get_hourly_user_location_weather(input_day)
