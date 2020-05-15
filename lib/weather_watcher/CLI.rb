@@ -25,9 +25,8 @@ class WeatherWatcher::CLI
   end
   
   def show_user_upcoming_days
-      WeatherWatcher::Daycard.all.each do
-      |day, description|
-      puts "#{day.day} - #{day.description}"
+      WeatherWatcher::Daycard.all.each do |day|
+      puts "#{day.day}"
     end
   end
     

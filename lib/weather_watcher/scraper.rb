@@ -12,9 +12,8 @@ def self.get_page_for_user_location(input_argument)
   daycard = page.css("li.day-card-list__item")
   daycard.each do |daycard|
     day = daycard.css("span.date").text.gsub("-","")
-    description = daycard.css("div.description").text
-  
-  WeatherWatcher::Daycard.new(day, description)
+    
+  WeatherWatcher::Daycard.new(day)
  end
  end
  
