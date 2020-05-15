@@ -7,10 +7,10 @@ class WeatherWatcher::CLI
     user_input = get_user_location 
     get_user_location_weather(user_input)
     input_day = get_day
-    
+    estimate = get_estimated_leave
+    get_hourly_user_location_weather(input_day, estimate)
     input_departure = get_leave_time
     input_return = get_return_time
-    get_hourly_user_location_weather(input_day)
     weather_for_outing(input_departure, input_return)
     get_more_weather_or_exit
   end
@@ -26,19 +26,24 @@ class WeatherWatcher::CLI
   
   def show_user_upcoming_days
       WeatherWatcher::Daycard.all.each do
-      |day|
-      puts "#{day.day}"
+      |day, description|
+      puts "#{day.day} - #{day.description}"
     end
   end
     
   def get_day
-    puts "What date (MM/DD) are you going out? Example: 0515"
+    puts "What date (MMDD) are you going out? Example: 0515"
     show_user_upcoming_days
     input = gets.chomp
   end
   
-  def get_hourly_user_location_weather(input_day)
-    WeatherWatcher::Scraper.get_hourly_for_user_location(input_day)
+  def get_estimated_leave
+    puts "About what time will you head out? Enter hour in miliary time (00-24)"
+    input = gets.chomp
+  end
+  
+  def get_hourly_user_location_weather(input_day, estimate)
+    WeatherWatcher::Scraper.get_hourly_for_user_location(input_day, estimate)
   end
   
   def show_user_upcoming_hours
@@ -47,12 +52,12 @@ class WeatherWatcher::CLI
     end
   end
 
-  def get_leave_time
-    puts "When will be leaving (enter number next to the hour)?"
-    show_user_upcoming_hours
-    input = gets.chomp.to_i
-  end
   
+  def get_leave_time
+   puts "When will be leaving (enter number next to the hour)?"
+  show_user_upcoming_hours
+  input = gets.chomp.to_i
+ end
   
   def get_return_time
    puts  "When will you be home (enter number next to the hour)?"
