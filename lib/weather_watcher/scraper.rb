@@ -10,10 +10,13 @@ def self.get_page_for_user_location(input_argument)
   page = Nokogiri::HTML(open("https://www.weatherbug.com/weather-forecast/10-day-weather/#{input_argument}"))
   
   daycard = page.css("li.day-card-list__item")
-  daycard.each do |daycard|
+  daycard.each_with_index do |daycard, index|
+    if index < 7
     day = daycard.css("span.date").text.gsub("-","")
-    
-  WeatherWatcher::Daycard.new(day)
+    description = daycard.css("div.day-card__summary__description").first.text.strip
+  WeatherWatcher::Daycard.new(day, description)
+  
+  end
  end
  end
  

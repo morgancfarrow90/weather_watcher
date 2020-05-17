@@ -4,11 +4,11 @@ require 'pry'
 class WeatherWatcher::Daycard
   @@all = []
   
-  attr_accessor :day
+  attr_accessor :day, :description
   
-  def initialize(day)
+  def initialize(day, description)
    @day = day
-   
+   @description = description
    save
   end 
 

@@ -25,14 +25,16 @@ class WeatherWatcher::CLI
   end
   
   def show_user_upcoming_days
+      puts "Let's look at the week ahead."
       WeatherWatcher::Daycard.all.each do |day|
       puts "#{day.day}"
+      puts "#{day.description}"
     end
   end
     
   def get_day
-    puts "What date (MMDD) are you going out? Example: 0515"
     show_user_upcoming_days
+    puts "What date (MMDD) are you going out? Example: 0515"
     input = gets.chomp
   end
   
