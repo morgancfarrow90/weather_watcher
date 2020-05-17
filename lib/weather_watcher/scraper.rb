@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'pry'
 
-
 class WeatherWatcher::Scraper
   
 attr_accessor :hour, :temp, :precip, :location_entry
@@ -24,7 +23,7 @@ attr_accessor :hour, :temp, :precip, :location_entry
 
   def self.get_hourly_for_user_location(input_argument, estimate)
    url = "https://www.weatherbug.com/weather-forecast/hourly/" + @location_entry + "?hour=2020#{input_argument}#{estimate}"
-  
+   
      page = Nokogiri::HTML(open(url))
     
      hourcard = page.css("div.hour-card")
