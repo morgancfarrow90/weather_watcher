@@ -1,13 +1,11 @@
 class WeatherWatcher::CLI
   
-  attr_accessor :user_location_url
-  
   def call 
     puts "Welcome to the Weather Watcher"
     user_input = get_user_location 
     get_user_location_weather(user_input)
     input_day = get_day
-    estimate = get_estimated_leave
+    estimate = get_estimated_leave_time
     get_hourly_user_location_weather(input_day, estimate)
     input_departure = get_leave_time
     input_return = get_return_time
@@ -16,7 +14,7 @@ class WeatherWatcher::CLI
   end
   
   def get_user_location
-    puts "Please enter your location's five digit zip code"
+    puts "What location do you need weather information for? Please enter the five digit zip code."
     input = gets.chomp
   end
   
@@ -24,21 +22,22 @@ class WeatherWatcher::CLI
     WeatherWatcher::Scraper.get_page_for_user_location(user_input)
   end
   
-  def show_user_upcoming_days
-      puts "Let's look at the week ahead."
-      WeatherWatcher::Daycard.all.each do |day|
+  def show_user_upcoming_week
+    puts "Let's look at the week ahead."
+    WeatherWatcher::Daycard.all.each do |day|
       puts "#{day.day}"
       puts "#{day.description}"
     end
   end
     
   def get_day
-    show_user_upcoming_days
-    puts "What date (MMDD) are you going out? Example: 0515"
+    show_user_upcoming_week
+    puts "_______"
+    puts "What day (MMDD) are you going out? Example: 0515"
     input = gets.chomp
   end
   
-  def get_estimated_leave
+  def get_estimated_leave_time
     puts "About what time will you head out? Enter hour in miliary time (00-24)"
     input = gets.chomp
   end
@@ -52,13 +51,12 @@ class WeatherWatcher::CLI
       puts "#{index}. #{hour.hour}"
     end
   end
-
   
   def get_leave_time
-   puts "When will be leaving (enter number next to the hour)?"
-  show_user_upcoming_hours
-  input = gets.chomp.to_i
- end
+    puts "When will you be leaving (enter number next to the hour)?"
+    show_user_upcoming_hours
+    input = gets.chomp.to_i
+  end
   
   def get_return_time
    puts  "When will you be home (enter number next to the hour)?"
@@ -67,19 +65,19 @@ class WeatherWatcher::CLI
   end
 
   def weather_for_outing(input_departure, input_return)
-   WeatherWatcher::Hourcard.select_hourcard_range(input_departure, input_return)
+    WeatherWatcher::Hourcard.select_hourcard_range(input_departure, input_return)
   end
   
   def get_more_weather_or_exit
     puts "Do you need more weather information? Enter yes or no"
     input = gets.chomp
     if input == "yes"
-    call
+      call
     elsif input == "no"
-    puts "Goodbye! Thank you for using Weather Watcher!"
+      puts "Goodbye! Thank you for using Weather Watcher!"
     else 
-    puts "Invalid Answer. Let's start over!"
-    call
+      puts "Invalid Answer. Let's start over!"
+      call
     end
   end
 
