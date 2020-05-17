@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'pry'
 
+
 class WeatherWatcher::Scraper
   
 attr_accessor :hour, :temp, :precip, :location_entry
@@ -28,12 +29,13 @@ attr_accessor :hour, :temp, :precip, :location_entry
     
      hourcard = page.css("div.hour-card")
    
-      hourcard.each do |hourcard|
-       hour = hourcard.css("div.time").text.strip
-       temp = hourcard.css("div.feels-like").text.strip
-       precip = hourcard.css("div.precip").text.strip
+      hourcard.each_with_index do |hourcard, index|
+         hour = hourcard.css("div.time").text.strip
+         temp = hourcard.css("div.feels-like").text.strip
+         precip = hourcard.css("div.precip").text.strip
     
        WeatherWatcher::Hourcard.new(hour, temp, precip)
-      end
+      
+    end
    end
 end

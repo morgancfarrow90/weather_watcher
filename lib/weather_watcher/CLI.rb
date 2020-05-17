@@ -23,7 +23,7 @@ class WeatherWatcher::CLI
   end
   
   def show_user_upcoming_week
-    puts "Let's look at the week ahead."
+    puts "Here is a look at the week ahead."
     WeatherWatcher::Daycard.all.each do |day|
       puts "#{day.day}"
       puts "#{day.description}"
@@ -33,13 +33,14 @@ class WeatherWatcher::CLI
   def get_day
     show_user_upcoming_week
     puts "_______"
-    puts "What day (MMDD) are you going out? Example: 0515"
+    puts ""
+    puts "What day (MMDD) in the next week are you going out? Example: 0515"
     input = gets.chomp
   end
   
   def get_estimated_leave_time
-    puts "About what time will you head out? Enter hour in miliary time (00-24)"
-    input = gets.chomp
+   puts "About what time will you head out? Enter hour in miliary time (00-24)"
+   input = gets.chomp
   end
   
   def get_hourly_user_location_weather(input_day, estimate)
